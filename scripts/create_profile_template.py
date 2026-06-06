@@ -10,18 +10,22 @@ from pathlib import Path
 
 TEMPLATE = {
     "target": {
-        "language": "",
+        "language": "zh-CN",
+        "output_format": "html",
         "role": "",
         "role_family": "",
         "seniority": "",
         "industry": "",
         "direction": "",
+        "template_style": "",
+        "expected_salary": "",
         "audience": "",
         "application_type": "",
         "notes": [],
     },
     "profile": {
         "name": "",
+        "age": "",
         "headline": "",
         "city": "",
         "phone": "",

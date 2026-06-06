@@ -2,12 +2,39 @@
 
 ## Intake
 
-Collect only what is needed for the target resume. Start with the user's goal, then ask for missing material in small batches.
+Collect only what is needed for the target resume. The first question should be whether the user already has a resume. Then follow the matching intake path and ask for missing material in small batches.
+
+Default assumptions:
+
+- Language: Chinese, unless the user asks for another language.
+- Primary artifact: an editable HTML resume file, unless the user asks for DOCX, PDF, Markdown, or another format.
+- Template style: ask the user to choose when they care; otherwise choose a practical style based on role and scenario.
+
+Existing resume path:
+
+1. Ask the user to upload/provide the resume file or paste the content.
+2. Ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, compressing length, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout.
+3. Ask for preferred template style: concise ATS, project-focused, sidebar compact, editorial visual, or another style the user describes.
+4. If the user has no optimization direction, infer it from the resume's target role, job-seeking information, strongest projects, and visible gaps. If the target role is not present, ask only for the target role before optimizing.
+5. Identify the strongest 1-3 projects or experiences and decide how to make them more prominent.
+
+No resume path:
+
+1. Collect the user's basic information: name, age, phone or other contact method, email, current city/region, target role, school, degree, major, expected salary, links, and certificates if any.
+2. Ask whether the user has work experience.
+3. If they have work experience, let them summarize it in one sentence first, then ask only for missing dates, company/role names, responsibilities, tools, and outcomes needed to make the resume truthful and useful.
+4. If they do not have work experience, collect internships, part-time work, campus activities, coursework, practice projects, portfolio pieces, learning records, or certificates that can become honest experience blocks.
+5. Use AI-assisted polishing to expand short notes into role-fit bullets, but do not invent employers, commercial clients, production launches, metrics, responsibilities, or seniority.
 
 Useful prompts:
 
+- 你现在有现成简历吗？如果有，可以直接发文件或粘贴内容；如果没有，我先帮你从基础信息搭一版。
+- 如果已有简历，你希望这次重点优化什么？例如突出重点项目、改投新岗位、压缩到一页、增强关键词、润色表达、换模板风格，或者你也可以说“没有方向”，我会按简历里的求职岗位自行判断。
+- 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、编辑感视觉，还是其他风格？没有偏好我会按岗位选择。
+- 如果没有简历，请先给我：姓名、年龄、联系方式、邮箱、所在地区、求职岗位、学校、学历、专业、期望薪资。
+- 你是否有工作经验？有的话先用一句话概括，例如“做过 2 年前端开发，主要负责后台系统和小程序”；没有的话告诉我实习、兼职、课程项目、校园经历或个人练习也可以。
 - 目标岗位是什么？属于技术、运营、销售、市场、产品、设计、行政、人事、财务、客服、教育、制造、服务业，还是其他方向？
-- 目标语言和投递地区是什么？例如中文、中国大陆；英文、美国；英文、新加坡；日文、日本；或其他任意语言/地区组合。
+- 目标语言和投递地区是否需要改动？默认使用中文、中国大陆简历习惯；也可以改成英文、美国；英文、新加坡；日文、日本；或其他任意语言/地区组合。
 - 这份简历主要投递给谁看：HR、业务负责人、技术/专业面试官、熟人内推、校招渠道，还是兼职/实习机会？
 - 你目前有哪些真实材料：工作经历、实习、兼职、课程作业、证书、作品集、比赛、社团、志愿服务、个人练习或模拟业务项目？
 - 如果没有正式项目，你愿意用哪些方式补充作品集：模拟案例、课程项目、岗位练习、作品展示、流程文档、数据分析样例、销售/运营方案、客服话术优化等？
@@ -27,6 +54,24 @@ Choose a resume angle before writing. The angle should match the target role fam
 - 教育培训型：强调课程准备、学生沟通、学习反馈、课堂执行、教研或辅导成果。
 - 技术研发型：强调需求拆解、工程实现、工具/框架、质量、性能、协作和上线维护。
 - 转行成长型：强调可迁移能力、学习路径、可展示作品、岗位相关练习和清晰动机。
+
+## Skill Extraction
+
+Build the skills section from evidence, not from a generic keyword list.
+
+For technical resumes:
+
+- Extract the tech stack from project names, `projects.tech`, tools, methods, bullets, deliverables, code repositories, and implementation descriptions.
+- Group extracted items by practical meaning, such as frontend, backend, data, testing, deployment, design tools, collaboration tools, or domain systems.
+- Keep only items the user actually used or can explain. If a project only mentions a tool casually, treat it as a weak signal until confirmed.
+- Prefer supported wording: "Vue3 / TypeScript / Element Plus" is stronger when a project bullet explains what was built with them.
+
+For non-technical resumes:
+
+- Extract role-fit skills from work and practice evidence, such as Excel reporting, CRM follow-up, SOP documentation, customer communication, content planning, event execution, visual design, teaching preparation, or inventory management.
+- Keep tools and methods close to the experience that proves them.
+
+When the extracted skill list is too long, prioritize items that are recent, repeated across multiple experiences, required by the target role, or tied to stronger deliverables.
 
 ## Beginner Experience Blocks
 
@@ -108,10 +153,10 @@ Better: “基于 Vue3 + Element Plus 完成订单、商品与权限配置模块
 
 Prefer this sequence:
 
-1. Produce a Markdown/content draft for quick review.
-2. Create a clean primary resume artifact.
-3. Generate optional visual variants only after content is stable.
-4. Export final DOCX/PDF and keep source files editable.
+1. Produce a concise content plan or draft for quick review when the content is incomplete or the risk of misinterpretation is high.
+2. Create the clean primary HTML resume artifact by default.
+3. Generate optional DOCX/PDF, ATS/plain, role-specific, or visual variants only after content is stable or when the user explicitly asks for them.
+4. Keep source files editable and avoid hiding private contact information in reusable public examples.
 5. Summarize decisions and remaining risks.
 
 ## Final Review Checklist
