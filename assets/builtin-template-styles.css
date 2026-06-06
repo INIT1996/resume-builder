@@ -1,0 +1,542 @@
+/* Built-in HTML resume template styles for resume-builder.
+   Default print target: A4. Use one modifier class on .resume-template:
+   ats-clean, project-focus, compact-sidebar, visual-editorial, ink-wash, neon-portfolio. */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  color: var(--resume-text, #263244);
+  font: 14px/1.62 "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+.resume-page,
+.resume-template {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 24px auto;
+  padding: var(--page-padding, 17mm 18mm);
+  color: var(--resume-text, #263244);
+  background: var(--resume-paper, #fff);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.16);
+  overflow: visible;
+}
+
+.resume-template {
+  --resume-paper: #ffffff;
+  --resume-bg: #f3f6f9;
+  --resume-ink: #111827;
+  --resume-text: #263244;
+  --resume-muted: #64748b;
+  --resume-line: #d8e0ea;
+  --resume-accent: #176b87;
+  --resume-accent-strong: #0f4e63;
+  --resume-soft: #eef7fb;
+  --resume-chip: #eef7fb;
+  --resume-chip-text: #0f4e63;
+  --resume-radius: 8px;
+  --section-gap: 17px;
+  --card-gap: 12px;
+  --page-padding: 17mm 18mm;
+}
+
+.resume-template h1,
+.resume-template h2,
+.resume-template h3,
+.resume-template p,
+.resume-template ul {
+  margin-top: 0;
+}
+
+.resume-template h1,
+.resume-template h2,
+.resume-template h3 {
+  color: var(--resume-ink);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.resume-template h1 {
+  margin-bottom: 6px;
+  font-size: 34px;
+}
+
+.resume-template h2 {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.resume-template h3 {
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.resume-template p {
+  margin-bottom: 8px;
+}
+
+.resume-template ul {
+  margin-bottom: 0;
+  padding-left: 18px;
+}
+
+.resume-template li {
+  margin: 3px 0;
+}
+
+.resume-template time,
+.resume-muted {
+  color: var(--resume-muted);
+}
+
+.resume-hero {
+  margin-bottom: 18px;
+}
+
+.resume-body {
+  display: block;
+}
+
+.resume-section + .resume-section,
+.resume-template section + section {
+  margin-top: var(--section-gap);
+}
+
+.resume-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--resume-line);
+}
+
+.resume-section-title::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 5px;
+  height: 17px;
+  border-radius: 999px;
+  background: var(--resume-accent);
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 70mm;
+  gap: 16px;
+  align-items: start;
+}
+
+.resume-main,
+.resume-sidebar {
+  min-width: 0;
+}
+
+.resume-card {
+  padding: 12px 14px;
+  border: 1px solid var(--resume-line);
+  border-radius: var(--resume-radius);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.resume-card + .resume-card {
+  margin-top: var(--card-gap);
+}
+
+.resume-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.resume-card-head h3 {
+  margin-bottom: 0;
+}
+
+.resume-meta {
+  margin-bottom: 7px;
+  color: var(--resume-accent);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.resume-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-tags li,
+.resume-tags span {
+  margin: 0;
+  padding: 3px 8px;
+  border: 1px solid color-mix(in srgb, var(--resume-accent) 28%, white);
+  border-radius: 999px;
+  color: var(--resume-chip-text);
+  background: var(--resume-chip);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.resume-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 12px 0 16px;
+}
+
+.resume-metric {
+  padding: 10px 11px;
+  border: 1px solid var(--resume-line);
+  border-radius: var(--resume-radius);
+  background: var(--resume-soft);
+}
+
+.resume-metric strong {
+  display: block;
+  color: var(--resume-accent-strong);
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.resume-metric span {
+  display: block;
+  margin-top: 4px;
+  color: var(--resume-muted);
+  font-size: 12px;
+  line-height: 1.42;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-contact li {
+  margin: 0;
+}
+
+.resume-contact b {
+  color: var(--resume-accent);
+}
+
+.resume-template--ats-clean {
+  --resume-paper: #ffffff;
+  --resume-bg: #f4f7fb;
+  --resume-ink: #172033;
+  --resume-text: #273449;
+  --resume-muted: #64748b;
+  --resume-line: #d7e0ea;
+  --resume-accent: #1f6f8b;
+  --resume-accent-strong: #164e63;
+  --resume-soft: #f1f7fb;
+  --resume-chip: #eef7fb;
+  --resume-chip-text: #164e63;
+  --resume-radius: 4px;
+}
+
+.resume-template--ats-clean .resume-hero {
+  padding-bottom: 11px;
+  border-bottom: 2px solid var(--resume-accent);
+}
+
+.resume-template--ats-clean .resume-card {
+  padding: 9px 0 10px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.resume-template--project-focus {
+  --resume-paper: #fbfdff;
+  --resume-bg: #e9f4ff;
+  --resume-ink: #14213d;
+  --resume-text: #273455;
+  --resume-muted: #667aa1;
+  --resume-line: #d6e1f1;
+  --resume-accent: #177e9d;
+  --resume-accent-strong: #09546b;
+  --resume-soft: #eef9ff;
+  --resume-chip: #ecfbff;
+  --resume-chip-text: #09546b;
+  --resume-radius: 10px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(70, 204, 221, 0.16), transparent 28%),
+    radial-gradient(circle at 91% 4%, rgba(236, 89, 153, 0.12), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.resume-template--project-focus .resume-hero {
+  margin: -5mm -6mm 17px;
+  padding: 15mm 13mm 13mm;
+  border-radius: 0 0 16px 16px;
+  color: #ffffff;
+  background:
+    linear-gradient(120deg, rgba(12, 91, 122, 0.92), rgba(29, 149, 173, 0.74), rgba(231, 87, 151, 0.46)),
+    radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.38), transparent 20%),
+    linear-gradient(135deg, #126782, #63cdda);
+}
+
+.resume-template--project-focus .resume-hero h1,
+.resume-template--project-focus .resume-hero h2,
+.resume-template--project-focus .resume-hero h3 {
+  color: #ffffff;
+}
+
+.resume-template--project-focus .resume-card {
+  border-left: 5px solid var(--resume-accent);
+  box-shadow: 0 12px 28px rgba(23, 126, 157, 0.09);
+}
+
+.resume-template--compact-sidebar {
+  --resume-paper: #fbfaf2;
+  --resume-bg: #dedfce;
+  --resume-ink: #2d3427;
+  --resume-text: #3f4738;
+  --resume-muted: #747b68;
+  --resume-line: #d6d6c5;
+  --resume-accent: #727a55;
+  --resume-accent-strong: #4f5740;
+  --resume-soft: #f0f0e3;
+  --resume-chip: #eeefe0;
+  --resume-chip-text: #4f5740;
+  --resume-radius: 6px;
+  --page-padding: 0;
+  display: grid;
+  grid-template-columns: 64mm minmax(0, 1fr);
+}
+
+.resume-template--compact-sidebar .resume-sidebar {
+  min-height: 297mm;
+  padding: 16mm 10mm;
+  background: #777d5c;
+  color: #fffdf2;
+}
+
+.resume-template--compact-sidebar .resume-sidebar h1,
+.resume-template--compact-sidebar .resume-sidebar h2,
+.resume-template--compact-sidebar .resume-sidebar h3 {
+  color: #fffdf2;
+}
+
+.resume-template--compact-sidebar .resume-sidebar .resume-muted,
+.resume-template--compact-sidebar .resume-sidebar time {
+  color: #edf0d8;
+}
+
+.resume-template--compact-sidebar .resume-main {
+  padding: 16mm 14mm 18mm;
+}
+
+.resume-template--compact-sidebar .resume-section-title {
+  border-bottom-color: var(--resume-line);
+}
+
+.resume-template--visual-editorial {
+  --resume-paper: #f7f7f5;
+  --resume-bg: #d9dbde;
+  --resume-ink: #2c2b2b;
+  --resume-text: #3d3d3d;
+  --resume-muted: #777;
+  --resume-line: #d4d4d0;
+  --resume-accent: #c68724;
+  --resume-accent-strong: #9b5f16;
+  --resume-soft: rgba(255, 255, 255, 0.58);
+  --resume-chip: rgba(255, 255, 255, 0.62);
+  --resume-chip-text: #3d3d3d;
+  --resume-radius: 10px;
+  background:
+    linear-gradient(132deg, rgba(255,255,255,0.82), rgba(255,255,255,0.42) 42%, rgba(190,194,200,0.36)),
+    linear-gradient(180deg, #f8f8f6, #ececea);
+}
+
+.resume-template--visual-editorial .resume-hero {
+  position: relative;
+  padding: 10mm 0 12mm;
+}
+
+.resume-template--visual-editorial .resume-hero h1 {
+  font-family: Georgia, "Times New Roman", "Microsoft YaHei", serif;
+  font-size: 44px;
+  font-weight: 400;
+}
+
+.resume-template--visual-editorial .resume-card,
+.resume-template--visual-editorial .resume-metric {
+  background: rgba(255,255,255,0.58);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 16px 36px rgba(40, 40, 44, 0.09);
+}
+
+.resume-template--ink-wash {
+  --resume-paper: #fbfaf4;
+  --resume-bg: #eef3f1;
+  --resume-ink: #263247;
+  --resume-text: #3d4859;
+  --resume-muted: #718096;
+  --resume-line: #d8e0dc;
+  --resume-accent: #5d8aa6;
+  --resume-accent-strong: #355f7a;
+  --resume-soft: #f1f6f4;
+  --resume-chip: #f6f2e6;
+  --resume-chip-text: #355f7a;
+  --resume-radius: 6px;
+  background:
+    radial-gradient(ellipse at 8% 22%, rgba(93, 138, 166, 0.15), transparent 28%),
+    radial-gradient(ellipse at 88% 8%, rgba(194, 155, 74, 0.16), transparent 22%),
+    linear-gradient(180deg, #fffdf7, #f4f7f5);
+}
+
+.resume-template--ink-wash .resume-section-title::before {
+  width: 18px;
+  height: 18px;
+  border-radius: 45% 55% 40% 60%;
+  background: linear-gradient(135deg, #5d8aa6, #c29b4a);
+}
+
+.resume-template--ink-wash .resume-card {
+  background: rgba(255,255,255,0.5);
+  border-color: #d8e0dc;
+}
+
+.resume-template--neon-portfolio {
+  --resume-paper: #08110d;
+  --resume-bg: #050807;
+  --resume-ink: #f4fff7;
+  --resume-text: #d9f7df;
+  --resume-muted: #83a98b;
+  --resume-line: rgba(84, 255, 111, 0.22);
+  --resume-accent: #36ff5e;
+  --resume-accent-strong: #b8ff3d;
+  --resume-soft: rgba(54, 255, 94, 0.09);
+  --resume-chip: rgba(54, 255, 94, 0.12);
+  --resume-chip-text: #d9ffd8;
+  --resume-radius: 8px;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    #08110d;
+  background-size: 12px 12px;
+}
+
+.resume-template--neon-portfolio .resume-hero {
+  margin: -4mm -5mm 16px;
+  padding: 13mm 12mm;
+  border: 1px solid rgba(54, 255, 94, 0.28);
+  border-radius: 0 0 14px 14px;
+  background:
+    radial-gradient(circle at 78% 35%, rgba(54, 255, 94, 0.28), transparent 24%),
+    linear-gradient(135deg, rgba(54,255,94,0.13), rgba(0,0,0,0));
+}
+
+.resume-template--neon-portfolio .resume-card,
+.resume-template--neon-portfolio .resume-metric {
+  background: rgba(4, 18, 10, 0.9);
+  box-shadow: 0 0 24px rgba(54, 255, 94, 0.08);
+}
+
+.resume-template--neon-portfolio .resume-section-title {
+  border-bottom-color: rgba(54, 255, 94, 0.25);
+}
+
+@media screen and (max-width: 840px) {
+  html,
+  body {
+    background: var(--resume-bg, #fff);
+  }
+
+  .resume-page,
+  .resume-template {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 24px 22px 34px;
+    box-shadow: none;
+  }
+
+  .resume-grid,
+  .resume-metrics,
+  .resume-template--compact-sidebar {
+    display: block;
+  }
+
+  .resume-template--compact-sidebar .resume-sidebar,
+  .resume-template--compact-sidebar .resume-main {
+    min-height: auto;
+    padding: 24px 22px;
+  }
+
+  .resume-template--compact-sidebar .resume-sidebar {
+    margin: -24px -22px 22px;
+  }
+
+  .resume-card-head {
+    display: block;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-page,
+  .resume-template {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .resume-template--compact-sidebar {
+    display: grid;
+  }
+
+  .resume-card,
+  .resume-section,
+  .resume-template section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .resume-card-head,
+  .resume-section-title {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  .resume-metric,
+  .resume-tags,
+  .resume-contact {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

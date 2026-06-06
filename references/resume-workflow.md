@@ -7,14 +7,14 @@ Collect only what is needed for the target resume. The first question should be 
 Default assumptions:
 
 - Language: Chinese, unless the user asks for another language.
-- Primary artifact: an editable HTML resume file, unless the user asks for DOCX, PDF, Markdown, or another format.
-- Template style: ask the user to choose when they care; otherwise choose a practical style based on role and scenario.
+- Primary artifact: one editable HTML resume file. Do not create JSON, DOCX, PDF, Markdown, or other side artifacts unless the user explicitly asks for them.
+- Template style: offer the built-in choices from `resume-template-catalog.md` when the user cares; otherwise choose a practical style based on role and scenario.
 
 Existing resume path:
 
 1. Ask the user to upload/provide the resume file or paste the content.
 2. Ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, compressing length, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout.
-3. Ask for preferred template style: concise ATS, project-focused, sidebar compact, editorial visual, or another style the user describes.
+3. Ask for preferred template style: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes.
 4. If the user has no optimization direction, infer it from the resume's target role, job-seeking information, strongest projects, and visible gaps. If the target role is not present, ask only for the target role before optimizing.
 5. Identify the strongest 1-3 projects or experiences and decide how to make them more prominent.
 
@@ -30,7 +30,7 @@ Useful prompts:
 
 - 你现在有现成简历吗？如果有，可以直接发文件或粘贴内容；如果没有，我先帮你从基础信息搭一版。
 - 如果已有简历，你希望这次重点优化什么？例如突出重点项目、改投新岗位、压缩到一页、增强关键词、润色表达、换模板风格，或者你也可以说“没有方向”，我会按简历里的求职岗位自行判断。
-- 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、编辑感视觉，还是其他风格？没有偏好我会按岗位选择。
+- 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、视觉编辑、山水纸感、霓虹作品集，还是其他风格？没有偏好我会按岗位选择。
 - 如果没有简历，请先给我：姓名、年龄、联系方式、邮箱、所在地区、求职岗位、学校、学历、专业、期望薪资。
 - 你是否有工作经验？有的话先用一句话概括，例如“做过 2 年前端开发，主要负责后台系统和小程序”；没有的话告诉我实习、兼职、课程项目、校园经历或个人练习也可以。
 - 目标岗位是什么？属于技术、运营、销售、市场、产品、设计、行政、人事、财务、客服、教育、制造、服务业，还是其他方向？
@@ -155,13 +155,15 @@ Prefer this sequence:
 
 1. Produce a concise content plan or draft for quick review when the content is incomplete or the risk of misinterpretation is high.
 2. Create the clean primary HTML resume artifact by default.
-3. Generate optional DOCX/PDF, ATS/plain, role-specific, or visual variants only after content is stable or when the user explicitly asks for them.
-4. Keep source files editable and avoid hiding private contact information in reusable public examples.
-5. Summarize decisions and remaining risks.
+3. Tune HTML print pagination before exporting or finishing. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, or shorten/compact them so page boundaries look continuous. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
+4. Stop after the editable HTML resume is complete unless the user explicitly asks for another artifact.
+5. Keep source files editable and avoid hiding private contact information in reusable public examples.
+6. Summarize decisions and remaining risks.
 
 ## Final Review Checklist
 
 - Target role is obvious in the first screen/page.
+- Visible resume text has no typos, wrong characters, accidental encoding artifacts, inconsistent names, or incorrect role/project/company terms.
 - Summary matches the strongest evidence in the experience section.
 - Dates and organization/project names are consistent.
 - Skills listed are supported by work, study, project, practice, or portfolio content.
@@ -169,4 +171,6 @@ Prefer this sequence:
 - Beginner practice items are labeled honestly.
 - No invented metrics, fake employers, fake clients, fake seniority, or unverifiable claims.
 - Contact info is present only in final private deliverables, not in reusable examples.
-- PDF print layout has no text clipping, overlapping, or awkward orphan lines.
+- HTML print layout uses an A4 page frame by default, with `@page size: A4` or an equivalent A4 print simulation, unless the user explicitly requested another paper size.
+- HTML print layout has no text clipping, overlapping, or awkward orphan lines.
+- HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, or cards pushed wholesale to the next page when they could be split or compacted.
