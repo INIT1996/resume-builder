@@ -8,7 +8,7 @@ By default, the skill writes resumes in Chinese and produces one editable HTML f
 
 ## What It Does
 
-- Create Chinese resumes from scratch.
+- Create resumes from scratch.
 - Improve the structure, wording, keywords, and project presentation of an existing resume.
 - Tailor resume versions for different roles, industries, regions, and audiences.
 - Turn scattered experience into work, project, practice, or portfolio sections.
@@ -18,6 +18,7 @@ By default, the skill writes resumes in Chinese and produces one editable HTML f
 ## Principles
 
 - Improve the user's real material without adding unsupported experience, data, or skills.
+- When optimizing an existing resume, preserve its original substance by default; compress length or remove content only when the user explicitly asks for it.
 - Organize resume structure and role focus before polishing individual lines.
 - Keep skills, tools, and project descriptions grounded in experience, coursework, portfolio work, or actual outputs.
 - Prioritize clarity, readability, submission quality, and print quality before visual decoration.
@@ -48,6 +49,28 @@ resume-builder/
 - `resume-builder/assets/builtin-template-styles.css`: Built-in style system for HTML resumes.
 - `resume-builder/agents/openai.yaml`: Display metadata for Codex/OpenAI environments.
 
+## Installation
+
+Place the whole `resume-builder/` directory in your Codex skills directory. A common target is `$CODEX_HOME/skills/resume-builder`.
+
+You can also give this project URL, [INIT1996/resume-builder](https://github.com/INIT1996/resume-builder), to Codex or another AI assistant and say:
+
+```text
+Please install this resume-builder skill for me: https://github.com/INIT1996/resume-builder
+```
+
+If the assistant can access local files or fetch the project, it can copy the `resume-builder/` directory into the right skills directory for you.
+
+In PowerShell:
+
+```powershell
+$skillsDir = Join-Path $env:CODEX_HOME "skills"
+New-Item -ItemType Directory -Force $skillsDir
+Copy-Item -Recurse -Force .\resume-builder $skillsDir
+```
+
+After installation, restart Codex or refresh the available skills. Then mention `resume-builder` or `$resume-builder` in a conversation.
+
 ## Usage
 
 In Codex, trigger the skill with:
@@ -59,7 +82,13 @@ Use $resume-builder to ask whether I already have a resume, then create or optim
 The skill first asks whether the user already has a resume, then produces one HTML file by default:
 
 - If yes: provide the file or paste the content, then describe the optimization goal and template preference.
-- If no: start with name, contact method, city, target role, school, degree, major, expected salary, certificates, and portfolio links, then add work, internship, coursework, practice projects, or campus experience.
+- If no: start with the target role and basic context, then progressively collect contact details, education, work, internship, coursework, practice projects, or campus experience.
+
+## Print And Export PDF
+
+The skill generates an HTML resume by default. To export a PDF, open the generated HTML file in a browser, press `Ctrl+P`, then choose “Save as PDF” or “Print to PDF”.
+
+Use A4 paper settings when possible. Keep the default scale first, check that the preview has no clipped or overlapping text, then save the PDF.
 
 ## Built-In Templates
 

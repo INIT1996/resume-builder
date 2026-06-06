@@ -90,7 +90,7 @@ Guidelines:
 
 - Keep `target.language` explicit. Use `zh-CN` by default unless the user requests another language, such as `en-US`, `en-GB`, `ja-JP`, `fr-FR`, or a plain language name supplied by the user.
 - Keep `target.output_format` as `html` by default unless the user requests DOCX, PDF, Markdown, or another format.
-- Use `target.direction` for the optimization focus, such as highlighting key projects, ATS keywords, length compression, wording polish, or target-role change. If the user has no direction, infer it from the resume's target role and strongest evidence.
+- Use `target.direction` for the optimization focus, such as highlighting key projects, ATS keywords, wording polish, target-role change, or user-requested length compression. If the user has no direction, infer it from the resume's target role and strongest evidence, but do not infer length compression unless the user explicitly asks for a shorter version or a page limit.
 - Use `target.template_style` for the requested or inferred built-in style ID: `ats-clean`, `project-focus`, `compact-sidebar`, `visual-editorial`, `ink-wash`, or `neon-portfolio`.
 - Use `target.expected_salary` when the user provides a salary expectation. Omit it from the final resume if it would weaken the application or the local convention does not call for it.
 - Use `profile.age` only when the user provides it or the target market convention makes it useful. Treat it as private information.

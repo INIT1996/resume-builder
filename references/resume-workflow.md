@@ -2,7 +2,7 @@
 
 ## Intake
 
-Collect only what is needed for the target resume. The first question should be whether the user already has a resume. Then follow the matching intake path and ask for missing material in small batches.
+Collect only what is needed for the target resume. The first question should be whether the user already has a resume. Then follow the matching intake path and ask for missing material progressively. Ask one question at a time, or at most 2-3 closely related questions, instead of presenting a long form.
 
 Default assumptions:
 
@@ -13,31 +13,32 @@ Default assumptions:
 Existing resume path:
 
 1. Ask the user to upload/provide the resume file or paste the content.
-2. Ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, compressing length, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout.
-3. Ask for preferred template style: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes.
+2. After reading the resume, ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout. Treat length compression as opt-in: only shorten, remove sections, or reduce bullets when the user explicitly asks for compression, a page limit, or a shorter version.
+3. Ask for preferred template style only after the optimization direction is clear or when the user cares about visual style: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes.
 4. If the user has no optimization direction, infer it from the resume's target role, job-seeking information, strongest projects, and visible gaps. If the target role is not present, ask only for the target role before optimizing.
-5. Identify the strongest 1-3 projects or experiences and decide how to make them more prominent.
+5. Identify the strongest 1-3 projects or experiences and decide how to make them more prominent without reducing the original substance by default.
 
 No resume path:
 
-1. Collect the user's basic information: name, age, phone or other contact method, email, current city/region, target role, school, degree, major, expected salary, links, and certificates if any.
-2. Ask whether the user has work experience.
-3. If they have work experience, let them summarize it in one sentence first, then ask only for missing dates, company/role names, responsibilities, tools, and outcomes needed to make the resume truthful and useful.
-4. If they do not have work experience, collect internships, part-time work, campus activities, coursework, practice projects, portfolio pieces, learning records, or certificates that can become honest experience blocks.
-5. Use AI-assisted polishing to expand short notes into role-fit bullets, but do not invent employers, commercial clients, production launches, metrics, responsibilities, or seniority.
+1. Start with the target role and one or two essential profile details. Do not ask for name, age, phone, email, city, school, degree, major, expected salary, links, and certificates all at once.
+2. Progressively collect missing basics in small turns: contact method, city/region, education, expected salary if relevant, links, and certificates.
+3. Ask whether the user has work experience only after the basic direction is clear.
+4. If they have work experience, let them summarize it in one sentence first, then ask only for missing dates, company/role names, responsibilities, tools, and outcomes needed to make the resume truthful and useful.
+5. If they do not have work experience, collect internships, part-time work, campus activities, coursework, practice projects, portfolio pieces, learning records, or certificates one category at a time.
+6. Use AI-assisted polishing to expand short notes into role-fit bullets, but do not invent employers, commercial clients, production launches, metrics, responsibilities, or seniority.
 
 Useful prompts:
 
 - 你现在有现成简历吗？如果有，可以直接发文件或粘贴内容；如果没有，我先帮你从基础信息搭一版。
-- 如果已有简历，你希望这次重点优化什么？例如突出重点项目、改投新岗位、压缩到一页、增强关键词、润色表达、换模板风格，或者你也可以说“没有方向”，我会按简历里的求职岗位自行判断。
+- 如果已有简历，你希望这次重点优化什么？例如突出重点项目、改投新岗位、增强关键词、润色表达、换模板风格，或者你也可以说“没有方向”，我会按简历里的求职岗位自行判断。默认不会压缩篇幅；如果你需要压缩到一页或做短版，请明确告诉我。
 - 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、视觉编辑、山水纸感、霓虹作品集，还是其他风格？没有偏好我会按岗位选择。
-- 如果没有简历，请先给我：姓名、年龄、联系方式、邮箱、所在地区、求职岗位、学校、学历、专业、期望薪资。
-- 你是否有工作经验？有的话先用一句话概括，例如“做过 2 年前端开发，主要负责后台系统和小程序”；没有的话告诉我实习、兼职、课程项目、校园经历或个人练习也可以。
+- 如果没有简历，我们先从最关键的开始：你想投什么岗位？所在城市或目标城市是哪里？
+- 你是否有工作经验？有的话先用一句话概括就行，例如“做过 2 年前端开发，主要负责后台系统和小程序”。
 - 目标岗位是什么？属于技术、运营、销售、市场、产品、设计、行政、人事、财务、客服、教育、制造、服务业，还是其他方向？
 - 目标语言和投递地区是否需要改动？默认使用中文、中国大陆简历习惯；也可以改成英文、美国；英文、新加坡；日文、日本；或其他任意语言/地区组合。
 - 这份简历主要投递给谁看：HR、业务负责人、技术/专业面试官、熟人内推、校招渠道，还是兼职/实习机会？
-- 你目前有哪些真实材料：工作经历、实习、兼职、课程作业、证书、作品集、比赛、社团、志愿服务、个人练习或模拟业务项目？
-- 如果没有正式项目，你愿意用哪些方式补充作品集：模拟案例、课程项目、岗位练习、作品展示、流程文档、数据分析样例、销售/运营方案、客服话术优化等？
+- 如果没有工作经验，我们先看一个方向：你有没有实习、兼职、课程项目、校园经历或个人练习？随便说一个最像经历的就行。
+- 如果没有正式项目，我会按目标岗位一步步帮你找可展示的练习或作品，不需要一次列全。
 - 有没有必须保留、弱化或不能公开的信息？
 
 ## Content Strategy
@@ -155,7 +156,7 @@ Prefer this sequence:
 
 1. Produce a concise content plan or draft for quick review when the content is incomplete or the risk of misinterpretation is high.
 2. Create the clean primary HTML resume artifact by default.
-3. Tune HTML print pagination before exporting or finishing. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, or shorten/compact them so page boundaries look continuous. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
+3. Tune HTML print pagination before exporting or finishing. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, adjust spacing, or refine layout density so page boundaries look continuous. For existing resumes, do not shorten bullets, remove sections, or compact content to fix pagination unless the user explicitly requests or approves that tradeoff. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
 4. Stop after the editable HTML resume is complete unless the user explicitly asks for another artifact.
 5. Keep source files editable and avoid hiding private contact information in reusable public examples.
 6. Summarize decisions and remaining risks.
@@ -173,4 +174,4 @@ Prefer this sequence:
 - Contact info is present only in final private deliverables, not in reusable examples.
 - HTML print layout uses an A4 page frame by default, with `@page size: A4` or an equivalent A4 print simulation, unless the user explicitly requested another paper size.
 - HTML print layout has no text clipping, overlapping, or awkward orphan lines.
-- HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, or cards pushed wholesale to the next page when they could be split or compacted.
+- HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, or cards pushed wholesale to the next page when they could be split or adjusted with layout changes.
