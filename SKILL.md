@@ -1,33 +1,35 @@
 ---
 name: resume-builder
-description: Create, rewrite, tailor, lay out, and export Chinese technical resumes from interview notes, existing resumes, project histories, or career-positioning conversations. Use when the user asks to make a resume/CV, optimize resume wording, package a resume-making workflow, produce HTML/DOCX/PDF resume versions, compare visual resume templates, or adapt a resume for frontend/full-stack/product-oriented roles.
+description: Create, rewrite, tailor, lay out, and export Chinese resumes for any role or industry from interview notes, existing resumes, work histories, learning records, portfolio projects, or career-positioning conversations. Use when the user asks to make a resume/CV, optimize resume wording, package a resume-making workflow, produce HTML/DOCX/PDF resume versions, compare visual resume templates, or adapt a resume for role families such as technology, operations, sales, marketing, product, design, finance, administration, education, customer service, manufacturing, or career-change scenarios.
 ---
 
 # Resume Builder
 
 ## Overview
 
-Use this skill to turn raw career material into a polished, position-aware Chinese technical resume. Preserve the user's real experience, improve expression and structure, and produce practical artifacts such as Markdown drafts, HTML previews, DOCX, PDF, and template variants when useful.
+Use this skill to turn raw career material into a polished, position-aware Chinese resume for any practical job target. Preserve the user's real experience, improve expression and structure, and produce practical artifacts such as Markdown drafts, HTML previews, DOCX, PDF, and template variants when useful.
 
 ## Workflow
 
-1. Clarify the target: role, seniority, city/remote preference, industry, whether the resume should emphasize delivery, product sense, full-stack growth, AI tooling, or management potential.
-2. Inventory the source material: existing resume, project notes, work history, skills, education, certifications, links, and any constraints about privacy or length.
+1. Clarify the target: role, role family, seniority, city/remote preference, industry, resume audience, and whether the resume should emphasize execution, service, sales conversion, operations, analysis, creativity, compliance, coordination, management potential, or technical delivery.
+2. Inventory the source material: existing resume, work history, project notes, learning records, internships, part-time jobs, campus activities, volunteer work, portfolio pieces, skills, education, certifications, links, and any constraints about privacy or length.
 3. Build structured resume data before polishing prose. If starting from scratch, run `scripts/create_profile_template.py` to create a JSON skeleton, then fill it from the conversation and files.
 4. Shape the strategy: choose the resume headline, summary, section order, which projects to feature, what to compress, and what to omit.
-5. Rewrite content with evidence: turn vague duties into concrete actions, technology choices, business flow ownership, collaboration, delivery outcomes, and user-facing impact. Do not invent metrics or responsibilities.
-6. Produce the primary version first. For Chinese tech resumes, prefer one clean DOCX/PDF version and optionally one HTML visual version for review.
-7. Create variants only when they serve a real use case: ATS/plain, visual/interview handout, role-specific version, or bilingual version.
-8. Verify final artifacts: spelling, dates, consistency, private data, print layout, text overflow, page count, and exported PDF readability.
+5. If the user is an industry beginner without formal projects, create truthful role-fit experience blocks from learning projects, simulated business tasks, case studies, portfolio work, coursework, certifications, internships, part-time jobs, club work, or volunteer scenarios. Label them honestly, such as "个人练习项目", "模拟业务项目", "课程项目", "作品集项目", or "校园/志愿经历"; do not fabricate employers, clients, production launches, revenue, user scale, or senior ownership.
+6. Rewrite content with evidence: turn vague duties into concrete actions, tools/methods used, task context, collaboration, deliverables, service quality, process improvement, business impact, or user/customer outcomes. Do not invent metrics or responsibilities.
+7. Produce the primary version first. For Chinese resumes, prefer one clean DOCX/PDF version and optionally one HTML visual version for review.
+8. Create variants only when they serve a real use case: ATS/plain, visual/interview handout, role-specific version, industry-specific version, campus recruitment version, career-change version, or bilingual version.
+9. Verify final artifacts: spelling, dates, consistency, private data, print layout, text overflow, page count, and exported PDF readability.
 
 ## Writing Rules
 
-- Write in concise Chinese by default. Keep English technical terms where they are standard: Vue3, TypeScript, UniApp, WebRTC, ECharts, Electron, Nginx.
-- Use strong but truthful Chinese action verbs such as "responsible for", "led", "participated in", "decomposed", "integrated", "encapsulated", "optimized", "delivered", "maintained", and "promoted" translated naturally into Chinese.
-- Prefer result-oriented bullets with this shape: action + technical/business context + delivered capability/impact.
+- Write in concise Chinese by default. Keep English terms only where they are standard in the target role or industry, such as CRM, Excel, SQL, Photoshop, Figma, ERP, SOP, KPI, ROI, Vue3, TypeScript, or ECharts.
+- Use strong but truthful Chinese action verbs that match the role, such as "负责", "参与", "跟进", "梳理", "协调", "执行", "分析", "维护", "优化", "设计", "整理", "交付", "复盘", "推动", "支持", "转化", "服务", and "落地".
+- Prefer result-oriented bullets with this shape: action + role/industry context + method/tool/process + delivered output/impact.
 - Avoid empty claims such as strong learning ability, responsibility, or familiarity with development processes unless tied to concrete evidence.
-- Keep project bullets scannable. Usually 3-5 bullets for featured projects and 1-2 lines for secondary projects.
+- Keep experience bullets scannable. Usually 3-5 bullets for featured work/projects and 1-2 lines for secondary items.
 - Do not fabricate numbers. If impact is qualitative, state the delivered workflow, supported scenario, reuse value, stability improvement, or collaboration outcome.
+- For non-IT roles, replace "项目经历" with a more natural section title when appropriate, such as "实践经历", "运营案例", "销售实践", "作品集项目", "校园经历", "服务经历", "行政支持经历", or "培训/课程项目".
 - Treat personal information as sensitive. Do not place phone, email, address, ID numbers, or private links into reusable templates or public examples.
 
 ## Layout Rules

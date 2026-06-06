@@ -11,9 +11,12 @@ from pathlib import Path
 TEMPLATE = {
     "target": {
         "role": "",
+        "role_family": "",
         "seniority": "",
+        "industry": "",
         "direction": "",
         "audience": "",
+        "application_type": "",
         "notes": [],
     },
     "profile": {
@@ -32,9 +35,24 @@ TEMPLATE = {
             "name": "",
             "date": "",
             "role": "",
+            "type": "",
             "tech": [],
+            "tools": [],
+            "methods": [],
             "context": "",
             "bullets": [],
+            "tags": [],
+        }
+    ],
+    "experience_blocks": [
+        {
+            "title": "",
+            "type": "",
+            "date": "",
+            "context": "",
+            "tools": [],
+            "bullets": [],
+            "evidence": [],
             "tags": [],
         }
     ],

@@ -1,4 +1,4 @@
 interface:
   display_name: "Resume Builder"
-  short_description: "Create tailored Chinese tech resumes from interview notes."
-  default_prompt: "Use $resume-builder to turn my experience notes into a polished resume."
+  short_description: "Create tailored Chinese resumes for any role or industry from real experience notes."
+  default_prompt: "Use $resume-builder to turn my experience notes into a polished role-fit resume."
