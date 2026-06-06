@@ -10,6 +10,7 @@ from pathlib import Path
 
 TEMPLATE = {
     "target": {
+        "language": "",
         "role": "",
         "role_family": "",
         "seniority": "",

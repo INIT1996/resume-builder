@@ -5,6 +5,7 @@ Use this structure when creating or editing a reusable resume profile. It is int
 ```json
 {
   "target": {
+    "language": "",
     "role": "",
     "role_family": "",
     "seniority": "",
@@ -83,6 +84,7 @@ Use this structure when creating or editing a reusable resume profile. It is int
 
 Guidelines:
 
+- Keep `target.language` explicit when the resume should be written in a specific language, such as `zh-CN`, `en-US`, `en-GB`, `ja-JP`, `fr-FR`, or a plain language name supplied by the user.
 - Keep `summary` as 2-4 bullet-like sentences, not a long paragraph.
 - Keep `target.role_family` broad and practical, such as `technology`, `operations`, `sales`, `marketing`, `product`, `design`, `finance`, `administration`, `hr`, `customer_service`, `education`, `manufacturing`, or `general`.
 - Keep `skills.items` factual and supported by work, projects, study, practice, or portfolio evidence.
