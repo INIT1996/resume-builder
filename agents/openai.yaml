@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resume Builder"
+  short_description: "Create tailored Chinese tech resumes from interview notes."
+  default_prompt: "Use $resume-builder to turn my experience notes into a polished resume."
