@@ -1,8 +1,8 @@
 # Built-in HTML Resume Templates
 
-Use this catalog when the user wants to choose a resume template style, or when the resume should default to an appropriate built-in HTML style.
+Use this catalog when presenting resume template styles for the user to choose.
 
-Default rule: ask the user to choose one of these styles after confirming whether they already have a resume. If the user has no preference, choose the safest role-fit option and briefly explain why.
+Default rule: ask the user to choose one of these styles after confirming whether they already have a resume and before final HTML generation. Do not choose a style for the user based on role, industry, or delivery scenario. If the user has no preference, ask them to confirm `ats-clean` as the default style.
 
 All templates must follow the HTML print rules in `SKILL.md`: Chinese by default, A4 by default, no typos, even spacing, no page-break gaps, no cramped page-edge content, and no text clipping.
 
@@ -19,12 +19,12 @@ All templates must follow the HTML print rules in `SKILL.md`: Chinese by default
 
 ## Selection Guidance
 
-- Choose `ats-clean` when the user wants the safest delivery or has no style preference.
-- Choose `project-focus` when key projects should be the visual and content center.
-- Choose `compact-sidebar` when the resume has many skills/tools but must stay compact.
-- Choose `visual-editorial` when the user wants a more advanced, high-end handout without hurting readability.
-- Choose `ink-wash` when the resume benefits from a quiet Chinese editorial tone.
-- Choose `neon-portfolio` only for creative/portfolio scenarios; do not use it for conservative HR delivery unless the user asks.
+- Recommend `ats-clean` when the user wants the safest delivery or confirms the default style.
+- Recommend `project-focus` when the user says key projects should be the visual and content center.
+- Recommend `compact-sidebar` when the user says the resume has many skills/tools but must stay compact.
+- Recommend `visual-editorial` when the user wants a more advanced, high-end handout without hurting readability.
+- Recommend `ink-wash` when the user wants a quiet Chinese editorial tone.
+- Recommend `neon-portfolio` only when the user asks for a creative/portfolio style; do not use it for conservative HR delivery unless the user selects it.
 
 ## User-facing Choice Text
 
@@ -37,7 +37,7 @@ When offering templates, use concise Chinese copy:
 > 4. 视觉编辑：更高级，适合面试展示或内推。  
 > 5. 山水纸感：克制、东方感，适合正式或文化类场景。  
 > 6. 霓虹作品集：强视觉，适合作品集/创意方向。  
-> 没有偏好我会按岗位自动选择。
+> 如果没有偏好，我可以使用默认的简洁 ATS；请你确认后我再生成。
 
 ## CSS Usage
 

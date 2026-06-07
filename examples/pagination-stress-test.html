@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>分页压力测试 - 简历生成示例</title>
+  <link rel="stylesheet" href="../assets/builtin-template-styles.css">
+  <style>
+    .sample-note {
+      width: 210mm;
+      margin: 18px auto 0;
+      color: #475569;
+      font: 13px/1.6 "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    .resume-block--too-tall {
+      outline: 2px solid #ef4444;
+      outline-offset: 3px;
+    }
+
+    @media print {
+      .sample-note {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p class="sample-note">分页压力测试：重点观察页面底部剩余高度较小时，下一模块是否只拆出能放下的文本，并把剩余内容作为一个整体续块放到下一页。</p>
+
+  <main id="resume-pages" class="resume-pages"></main>
+
+  <template id="resume-source">
+    <header class="resume-block resume-hero">
+      <p class="resume-muted">前端开发工程师 / Vue3 / TypeScript / 数据可视化 / 中后台</p>
+      <h1>周明远</h1>
+      <p>6 年前端开发经验，长期参与 SaaS 中后台、运营活动平台、数据看板和多端协作工具建设。熟悉 Vue3、TypeScript、组件化开发、复杂表单、接口联调和线上问题闭环，关注页面还原、交互细节、工程质量与业务可维护性。</p>
+      <ul class="resume-tags">
+        <li>138-0000-0000</li>
+        <li>zhoumingyuan@example.com</li>
+        <li>杭州</li>
+        <li>前端开发工程师</li>
+      </ul>
+    </header>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">核心优势</h2>
+      <div class="resume-metrics">
+        <div class="resume-metric"><strong>6 年</strong><span>前端项目交付经验</span></div>
+        <div class="resume-metric"><strong>10+</strong><span>中后台与 H5 模块</span></div>
+        <div class="resume-metric"><strong>4 类</strong><span>表单 / 权限 / 图表 / 流程</span></div>
+      </div>
+      <ul>
+        <li>能够从需求流程、页面结构、接口状态、异常反馈和权限边界五个层面拆解复杂业务，推动功能稳定落地。</li>
+        <li>熟悉 Vue3、TypeScript、Pinia、Element Plus、ECharts 和 Vite，能独立完成中后台核心模块开发。</li>
+        <li>重视可维护性，习惯沉淀动态表单、筛选列表、弹窗流程、状态标签和数据空态等通用能力。</li>
+      </ul>
+    </section>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">技能栈</h2>
+      <div class="resume-card">
+        <p><strong>前端基础：</strong>HTML5 / CSS3 / JavaScript / ES6+ / TypeScript / Sass / 响应式布局</p>
+        <p><strong>框架生态：</strong>Vue3 / Vue Router / Pinia / Element Plus / Vite / UniApp / Vant</p>
+        <p><strong>业务能力：</strong>数据看板 / 动态表单 / 权限控制 / 审批流 / WebSocket 消息同步 / 文件上传下载</p>
+        <p><strong>工程协作：</strong>Git / 接口联调 / 组件封装 / 代码评审 / Nginx 基础部署 / AI 辅助开发</p>
+      </div>
+    </section>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">工作经历</h2>
+      <article class="resume-card">
+        <div class="resume-card-head">
+          <h3>星河云图科技有限公司 · 前端开发工程师</h3>
+          <time>2023.04 - 至今</time>
+        </div>
+        <ul>
+          <li>负责企业数据运营平台的前端开发，围绕客户画像、线索池、跟进记录、经营看板和权限配置完成核心页面建设。</li>
+          <li>基于 Vue3 + TypeScript 封装动态表单、筛选列表、弹窗流程和状态标签组件，支持多个业务模块复用。</li>
+          <li>对接后端分页、导入导出、审批流和消息提醒接口，处理空状态、异常提示和权限差异展示。</li>
+          <li>参与需求评审和测试反馈处理，跟进从开发、联调、验收到上线后的问题闭环。</li>
+        </ul>
+      </article>
+    </section>
+
+    <article class="resume-block resume-card">
+      <div class="resume-card-head">
+        <h3>澜舟互动网络有限公司 · 前端开发</h3>
+        <time>2020.07 - 2023.03</time>
+      </div>
+      <ul>
+        <li>参与多个运营后台和活动 H5 项目开发，根据产品需求和 UI 稿完成页面搭建、数据交互和移动端适配，并在活动上线前配合运营人员反复检查页面状态、表单校验、分享链路和异常提示。</li>
+        <li>维护活动配置、奖品管理、数据统计和用户反馈等模块，优化列表筛选、批量操作、状态标签和弹窗确认流程，提升运营人员配置效率。</li>
+        <li>配合后端完成接口联调和问题排查，处理浏览器兼容、样式还原、接口错误、登录状态失效和线上数据异常反馈。</li>
+      </ul>
+    </article>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">重点项目</h2>
+      <article class="resume-card">
+        <div class="resume-card-head">
+          <h3>企业数据运营平台</h3>
+          <time>2024.02 - 至今</time>
+        </div>
+        <p class="resume-meta">Vue3 / TypeScript / Pinia / Element Plus / ECharts</p>
+        <ul>
+          <li>负责客户画像、线索池、跟进记录和经营看板等模块开发，支持销售、运营和管理角色按权限查看数据。</li>
+          <li>封装可配置筛选器和表格列配置能力，支持不同业务线复用查询条件、列展示、批量操作和导出逻辑。</li>
+          <li>使用 ECharts 完成漏斗、趋势、排行和区域分布图表，处理多维筛选、图表空状态和接口异常展示。</li>
+          <li>梳理审批状态流转和消息提醒交互，减少重复弹窗逻辑，提升用户在复杂流程中的操作确定性。</li>
+        </ul>
+        <ul class="resume-tags">
+          <li>数据看板</li>
+          <li>权限控制</li>
+          <li>组件复用</li>
+        </ul>
+      </article>
+    </section>
+
+    <article class="resume-block resume-card">
+      <div class="resume-card-head">
+        <h3>低代码活动配置系统</h3>
+        <time>2022.08 - 2023.02</time>
+      </div>
+      <p class="resume-meta">Vue2 / Element UI / JSON Schema / 文件上传</p>
+      <ul>
+        <li>负责活动页面配置后台开发，支持运营人员配置基础信息、报名表单、奖品规则、分享文案和页面素材。</li>
+        <li>基于 JSON Schema 思路设计表单渲染规则，减少同类活动重复开发成本。</li>
+        <li>处理图片上传、富文本预览、字段校验和草稿保存逻辑，降低运营配置出错概率。</li>
+        <li>配合测试梳理活动上线检查清单，覆盖配置缺失、时间冲突、奖品库存和页面预览异常。</li>
+      </ul>
+    </article>
+
+    <article class="resume-block resume-card">
+      <div class="resume-card-head">
+        <h3>移动端会员中心 H5</h3>
+        <time>2021.05 - 2021.12</time>
+      </div>
+      <p class="resume-meta">Vue / Vant / Axios / 移动端适配</p>
+      <ul>
+        <li>完成会员权益、积分明细、优惠券列表和消息中心等页面开发，适配主流移动端屏幕。</li>
+        <li>处理登录态失效、接口错误、列表分页、骨架屏和空状态展示，提升弱网场景下的使用体验。</li>
+        <li>根据运营活动需求扩展权益领取和优惠券核销流程，配合后端完成状态联调。</li>
+      </ul>
+    </article>
+
+    <article class="resume-block resume-card">
+      <div class="resume-card-head">
+        <h3>实时工单协作看板</h3>
+        <time>2020.10 - 2021.04</time>
+      </div>
+      <p class="resume-meta">Vue / WebSocket / ECharts</p>
+      <ul>
+        <li>负责工单列表、状态看板和实时提醒模块开发，支持客服团队查看待处理、处理中和超时工单。</li>
+        <li>基于 WebSocket 接收状态变化和新工单提醒，处理重连、重复消息和本地列表更新。</li>
+        <li>使用 ECharts 展示工单来源、响应时长和处理结果分布，辅助管理者复盘服务质量。</li>
+      </ul>
+    </article>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">其他经历</h2>
+      <article class="resume-card">
+        <div class="resume-card-head">
+          <h3>个人组件练习与技术沉淀</h3>
+          <time>持续进行</time>
+        </div>
+        <ul>
+          <li>整理表单校验、列表筛选、图表容器、文件上传和权限按钮等常用组件示例，提升日常开发启动效率。</li>
+          <li>使用 AI 工具辅助阅读接口文档、生成测试数据、检查异常分支和整理需求说明，同时保留人工复核和调试。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="resume-block resume-section">
+      <h2 class="resume-section-title">教育经历</h2>
+      <article class="resume-card">
+        <div class="resume-card-head">
+          <h3>江南理工大学 · 软件工程 · 本科</h3>
+          <time>2016.09 - 2020.06</time>
+        </div>
+        <p>主修 Web 开发、数据库基础、软件工程、数据结构和计算机网络。毕业设计为校园活动管理系统。</p>
+      </article>
+    </section>
+  </template>
+
+  <script>
+    async function paginateResume() {
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      const pagesRoot = document.getElementById("resume-pages");
+      const sourceTemplate = document.getElementById("resume-source");
+      const sourceBlocks = Array.from(sourceTemplate.content.children);
+      const templateClass = "resume-template--project-focus";
+      pagesRoot.innerHTML = "";
+
+      const createPage = () => {
+        const page = document.createElement("section");
+        page.className = `resume-page resume-template ${templateClass}`;
+        const content = document.createElement("div");
+        content.className = "resume-page-content";
+        page.appendChild(content);
+        pagesRoot.appendChild(page);
+        return content;
+      };
+
+      let current = createPage();
+
+      const getUsedHeight = (container) => {
+        const children = Array.from(container.children);
+        if (!children.length) {
+          return 0;
+        }
+
+        const containerTop = container.getBoundingClientRect().top;
+        return Math.max(...children.map((child) => {
+          const rect = child.getBoundingClientRect();
+          const style = getComputedStyle(child);
+          return rect.bottom - containerTop + parseFloat(style.marginBottom || "0");
+        }));
+      };
+
+      const getMaxHeight = () => current.getBoundingClientRect().height;
+
+      const tryAppend = (block) => {
+        current.appendChild(block);
+        if (getUsedHeight(current) > getMaxHeight() + 1) {
+          current.removeChild(block);
+          return false;
+        }
+        return true;
+      };
+
+      const continuationLabel = (block) => {
+        const title = block.querySelector(".resume-card-head h3")?.textContent.trim()
+          || block.querySelector("h3")?.textContent.trim()
+          || "上一页内容";
+        const label = document.createElement("p");
+        label.className = "resume-continuation-label";
+        label.textContent = `${title} · 续`;
+        return label;
+      };
+
+      const cloneWithoutChildren = (block) => {
+        const clone = block.cloneNode(false);
+        clone.classList.add("resume-block");
+        return clone;
+      };
+
+      const splitCard = (card) => {
+        const list = card.querySelector(":scope > ul:not(.resume-tags)");
+        const items = list ? Array.from(list.children) : [];
+        if (items.length < 2) {
+          return [];
+        }
+
+        const head = card.querySelector(":scope > .resume-card-head");
+        const meta = card.querySelector(":scope > .resume-meta");
+        const tags = card.querySelector(":scope > .resume-tags");
+
+        return items.map((item, index) => {
+          const fragment = cloneWithoutChildren(card);
+          if (index === 0) {
+            if (head) fragment.appendChild(head.cloneNode(true));
+            if (meta) fragment.appendChild(meta.cloneNode(true));
+          } else {
+            fragment.classList.add("resume-card--continued");
+            fragment.appendChild(continuationLabel(card));
+          }
+
+          const fragmentList = list.cloneNode(false);
+          fragmentList.appendChild(item.cloneNode(true));
+          fragment.appendChild(fragmentList);
+
+          if (index === items.length - 1 && tags) {
+            fragment.appendChild(tags.cloneNode(true));
+          }
+          return fragment;
+        });
+      };
+
+      const splitSection = (section) => {
+        const title = section.querySelector(":scope > .resume-section-title");
+        const card = section.querySelector(":scope > .resume-card");
+        const cardFragments = card ? splitCard(card) : [];
+        if (!title || !cardFragments.length) {
+          return [];
+        }
+
+        const first = cloneWithoutChildren(section);
+        first.appendChild(title.cloneNode(true));
+        first.appendChild(cardFragments[0]);
+        return [first, ...cardFragments.slice(1)];
+      };
+
+      const splitBlock = (block) => {
+        if (block.classList.contains("resume-card")) {
+          return splitCard(block);
+        }
+        if (block.classList.contains("resume-section")) {
+          return splitSection(block);
+        }
+        return [];
+      };
+
+      const compactForCurrentPage = (block) => {
+        const compact = block.cloneNode(true);
+        if (compact.classList.contains("resume-card")) {
+          compact.classList.add("resume-card--page-fragment");
+        }
+        compact.querySelectorAll(".resume-card").forEach((card) => {
+          card.classList.add("resume-card--page-fragment");
+        });
+        return compact;
+      };
+
+      const findFirstListItem = (block) => block.querySelector("li");
+
+      const buildLineFragment = (text) => {
+        const article = document.createElement("article");
+        article.className = "resume-block resume-card resume-card--continued resume-card--page-fragment resume-line-fragment";
+        const list = document.createElement("ul");
+        const item = document.createElement("li");
+        item.textContent = text;
+        list.appendChild(item);
+        article.appendChild(list);
+        return article;
+      };
+
+      const buildRemainderFragment = (sourceBlock, remainderText) => {
+        const clone = sourceBlock.cloneNode(true);
+        clone.classList.add("resume-block", "resume-card--continued");
+        clone.querySelectorAll(".resume-card").forEach((card) => {
+          card.classList.add("resume-card--continued");
+        });
+
+        const firstItem = findFirstListItem(clone);
+        if (firstItem) {
+          firstItem.textContent = remainderText;
+        }
+
+        const firstCard = clone.classList.contains("resume-card")
+          ? clone
+          : clone.querySelector(".resume-card");
+        if (firstCard && !firstCard.querySelector(":scope > .resume-continuation-label")) {
+          firstCard.insertBefore(continuationLabel(sourceBlock), firstCard.firstChild);
+        }
+
+        clone.querySelectorAll(".resume-card-head").forEach((head) => head.remove());
+        return clone;
+      };
+
+      const splitTextToFitCurrentPage = (block) => {
+        if (!current.children.length) {
+          return null;
+        }
+
+        const firstItem = findFirstListItem(block);
+        const text = firstItem?.textContent.trim();
+        if (!text || text.length < 8) {
+          return null;
+        }
+
+        let low = 1;
+        let high = text.length - 1;
+        let best = 0;
+
+        while (low <= high) {
+          const mid = Math.floor((low + high) / 2);
+          const candidateText = text.slice(0, mid).replace(/[，。；、\s]+$/, "");
+          const candidate = buildLineFragment(candidateText);
+          current.appendChild(candidate);
+          const fits = getUsedHeight(current) <= getMaxHeight() + 1;
+          current.removeChild(candidate);
+
+          if (fits) {
+            best = candidateText.length;
+            low = mid + 1;
+          } else {
+            high = mid - 1;
+          }
+        }
+
+        if (best < 4) {
+          return null;
+        }
+
+        const prefix = text.slice(0, best).replace(/[，。；、\s]+$/, "");
+        const suffix = text.slice(best).replace(/^[，。；、\s]+/, "");
+        if (!prefix || !suffix) {
+          return null;
+        }
+
+        return {
+          head: buildLineFragment(prefix),
+          tail: buildRemainderFragment(block, suffix)
+        };
+      };
+
+      const appendAtomically = (block) => {
+        if (tryAppend(block)) {
+          return;
+        }
+
+        if (current.children.length) {
+          const compact = compactForCurrentPage(block);
+          if (tryAppend(compact)) {
+            return;
+          }
+        }
+
+        if (!current.children.length) {
+          current.appendChild(block);
+          block.classList.add("resume-block--too-tall");
+          return;
+        }
+
+        current = createPage();
+        if (!tryAppend(block)) {
+          current.appendChild(block);
+          block.classList.add("resume-block--too-tall");
+        }
+      };
+
+      const appendBlock = (block) => {
+        if (tryAppend(block)) {
+          return;
+        }
+
+        const textSplit = splitTextToFitCurrentPage(block);
+        if (textSplit && tryAppend(textSplit.head)) {
+          current = createPage();
+          appendBlock(textSplit.tail);
+          return;
+        }
+
+        if (current.children.length) {
+          current = createPage();
+          appendBlock(block);
+          return;
+        }
+
+        const fragments = splitBlock(block);
+        if (fragments.length > 1) {
+          for (const fragment of fragments) {
+            appendAtomically(fragment);
+          }
+          return;
+        }
+
+        appendAtomically(block);
+      };
+
+      for (const original of sourceBlocks) {
+        appendBlock(original.cloneNode(true));
+      }
+
+      document.documentElement.dataset.pageCount = String(pagesRoot.children.length);
+    }
+
+    window.addEventListener("load", paginateResume);
+    window.addEventListener("resize", () => {
+      clearTimeout(window.__resumePaginateTimer);
+      window.__resumePaginateTimer = setTimeout(paginateResume, 120);
+    });
+  </script>
+</body>
+</html>

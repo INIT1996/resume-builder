@@ -15,6 +15,10 @@ html {
   background: #e5e7eb;
 }
 
+.resume-pages {
+  background: #e5e7eb;
+}
+
 body {
   margin: 0;
   color: var(--resume-text, #263244);
@@ -32,6 +36,26 @@ body {
   background: var(--resume-paper, #fff);
   box-shadow: 0 22px 60px rgba(15, 23, 42, 0.16);
   overflow: visible;
+}
+
+.resume-pages .resume-page {
+  height: 297mm;
+  min-height: 297mm;
+  overflow: hidden;
+}
+
+.resume-page-content {
+  height: 100%;
+  min-width: 0;
+}
+
+.resume-page-content > .resume-block {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.resume-page-content > .resume-block + .resume-block {
+  margin-top: var(--block-gap, 12px);
 }
 
 .resume-template {
@@ -153,6 +177,54 @@ body {
 
 .resume-card + .resume-card {
   margin-top: var(--card-gap);
+}
+
+.resume-card--continued {
+  border-top-style: dashed;
+}
+
+.resume-card--page-fragment {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.resume-card--page-fragment .resume-card-head {
+  margin-bottom: 3px;
+}
+
+.resume-card--page-fragment .resume-meta,
+.resume-card--page-fragment .resume-continuation-label {
+  margin-bottom: 3px;
+}
+
+.resume-card--page-fragment li {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.resume-line-fragment {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.resume-line-fragment ul {
+  padding-left: 18px;
+}
+
+.resume-line-fragment li {
+  margin: 0;
+}
+
+.resume-card--continued .resume-card-head {
+  margin-bottom: 4px;
+}
+
+.resume-continuation-label {
+  margin-bottom: 5px;
+  color: var(--resume-accent);
+  font-size: 12.5px;
+  font-weight: 700;
 }
 
 .resume-card-head {
@@ -322,13 +394,13 @@ body {
   --resume-chip: #eeefe0;
   --resume-chip-text: #4f5740;
   --resume-radius: 6px;
-  --page-padding: 0;
+  --page-padding: 12mm;
   display: grid;
   grid-template-columns: 64mm minmax(0, 1fr);
 }
 
 .resume-template--compact-sidebar .resume-sidebar {
-  min-height: 297mm;
+  min-height: calc(297mm - 24mm);
   padding: 16mm 10mm;
   background: #777d5c;
   color: #fffdf2;
@@ -514,6 +586,19 @@ body {
     margin: 0 auto;
     box-shadow: none;
     overflow: visible;
+  }
+
+  .resume-pages .resume-page {
+    height: 297mm;
+    margin: 0;
+    overflow: hidden;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .resume-pages .resume-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
   }
 
   .resume-template--compact-sidebar {

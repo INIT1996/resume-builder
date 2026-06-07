@@ -8,13 +8,13 @@ Default assumptions:
 
 - Language: Chinese, unless the user asks for another language.
 - Primary artifact: one editable HTML resume file. Do not create JSON, DOCX, PDF, Markdown, or other side artifacts unless the user explicitly asks for them.
-- Template style: offer the built-in choices from `resume-template-catalog.md` when the user cares; otherwise choose a practical style based on role and scenario.
+- Template style: the user chooses the style. Before final HTML generation, offer the built-in choices from `resume-template-catalog.md`. Do not choose a style based only on role or scenario. If the user has no preference, ask them to confirm the default `ats-clean` style.
 
 Existing resume path:
 
 1. Ask the user to upload/provide the resume file or paste the content.
 2. After reading the resume, ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout. Treat length compression as opt-in: only shorten, remove sections, or reduce bullets when the user explicitly asks for compression, a page limit, or a shorter version.
-3. Ask for preferred template style only after the optimization direction is clear or when the user cares about visual style: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes.
+3. Ask for preferred template style after the optimization direction is clear and before final HTML generation: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes. Do not choose for the user; if they have no preference, ask whether to use `ats-clean` as the default.
 4. If the user has no optimization direction, infer it from the resume's target role, job-seeking information, strongest projects, and visible gaps. If the target role is not present, ask only for the target role before optimizing.
 5. Identify the strongest 1-3 projects or experiences and decide how to make them more prominent without reducing the original substance by default.
 
@@ -31,7 +31,7 @@ Useful prompts:
 
 - 你现在有现成简历吗？如果有，可以直接发文件或粘贴内容；如果没有，我先帮你从基础信息搭一版。
 - 如果已有简历，你希望这次重点优化什么？例如突出重点项目、改投新岗位、增强关键词、润色表达、换模板风格，或者你也可以说“没有方向”，我会按简历里的求职岗位自行判断。默认不会压缩篇幅；如果你需要压缩到一页或做短版，请明确告诉我。
-- 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、视觉编辑、山水纸感、霓虹作品集，还是其他风格？没有偏好我会按岗位选择。
+- 你喜欢哪种模板风格：简洁 ATS、项目突出、侧栏紧凑、视觉编辑、山水纸感、霓虹作品集，还是其他风格？如果没有偏好，我可以使用默认的简洁 ATS，你确认一下即可。
 - 如果没有简历，我们先从最关键的开始：你想投什么岗位？所在城市或目标城市是哪里？
 - 你是否有工作经验？有的话先用一句话概括就行，例如“做过 2 年前端开发，主要负责后台系统和小程序”。
 - 目标岗位是什么？属于技术、运营、销售、市场、产品、设计、行政、人事、财务、客服、教育、制造、服务业，还是其他方向？
@@ -156,7 +156,7 @@ Prefer this sequence:
 
 1. Produce a concise content plan or draft for quick review when the content is incomplete or the risk of misinterpretation is high.
 2. Create the clean primary HTML resume artifact by default.
-3. Tune HTML print pagination before exporting or finishing. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, adjust spacing, or refine layout density so page boundaries look continuous. For existing resumes, do not shorten bullets, remove sections, or compact content to fix pagination unless the user explicitly requests or approves that tradeoff. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
+3. Tune HTML print pagination before exporting or finishing. For multi-page resumes, use the JavaScript-assisted pagination workflow in `html-pagination.md`: render content once, measure block heights, compare each block with the A4 content area height after page padding, then create separate `.resume-page` elements. Do not only calculate large modules. If a card or section does not fit but the current page still has useful space, split the next module by the current page's remaining height and move only the measured amount that fits upward. If the remaining height can only fit one line, split the first text item by measured height, move that line upward, and keep the remaining text plus the rest of the module as one continuation block. The moved fragment must keep the same card/bullet/accent formatting as the original module; do not render it as bare text. Avoid repeatedly splitting the same header or creating several continuation labels for one module. If the first fragment narrowly does not fit, try a compact page-fragment style before opening a new page. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, adjust spacing, or refine layout density so page boundaries look continuous. For existing resumes, do not shorten bullets, remove sections, or compact content to fix pagination unless the user explicitly requests or approves that tradeoff. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
 4. Stop after the editable HTML resume is complete unless the user explicitly asks for another artifact.
 5. Keep source files editable and avoid hiding private contact information in reusable public examples.
 6. Summarize decisions and remaining risks.
@@ -173,5 +173,6 @@ Prefer this sequence:
 - No invented metrics, fake employers, fake clients, fake seniority, or unverifiable claims.
 - Contact info is present only in final private deliverables, not in reusable examples.
 - HTML print layout uses an A4 page frame by default, with `@page size: A4` or an equivalent A4 print simulation, unless the user explicitly requested another paper size.
+- Multi-page HTML uses separate `.resume-page` elements generated by measuring rendered content height against the available A4 content area, not a single long page with accidental browser slicing.
 - HTML print layout has no text clipping, overlapping, or awkward orphan lines.
-- HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, or cards pushed wholesale to the next page when they could be split or adjusted with layout changes.
+- HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, inconsistent split-fragment formatting, repeated continuation headers, or cards pushed wholesale to the next page when they could be split or adjusted with layout changes.
