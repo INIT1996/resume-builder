@@ -2,7 +2,7 @@
 
 ## Intake
 
-Collect only what is needed for the target resume. The first question should be whether the user already has a resume. Then follow the matching intake path and ask for missing material progressively. Ask one question at a time, or at most 2-3 closely related questions, instead of presenting a long form.
+Collect only what is needed for the target resume. The first question should be whether the user already has a resume. Do not inspect the current directory, search local files, or auto-read possible resume files before asking this question. If the user says they have a resume, ask them to upload the file or paste the content; only read a local file when the user explicitly provides its path or asks you to use it. Then follow the matching intake path and ask for missing material progressively. Ask one question at a time, or at most 2-3 closely related questions, instead of presenting a long form.
 
 Default assumptions:
 
@@ -12,7 +12,7 @@ Default assumptions:
 
 Existing resume path:
 
-1. Ask the user to upload/provide the resume file or paste the content.
+1. Ask the user to upload/provide the resume file or paste the content. Do not scan the workspace for resume files unless the user explicitly asks you to look in a specific path.
 2. After reading the resume, ask for the optimization direction, such as highlighting key projects, strengthening target-role keywords, improving ATS readability, polishing expression, changing target roles, or making a visual interview handout. Treat length compression as opt-in: only shorten, remove sections, or reduce bullets when the user explicitly asks for compression, a page limit, or a shorter version.
 3. Ask for preferred template style after the optimization direction is clear and before final HTML generation: 简洁 ATS (`ats-clean`), 项目突出 (`project-focus`), 侧栏紧凑 (`compact-sidebar`), 视觉编辑 (`visual-editorial`), 山水纸感 (`ink-wash`), 霓虹作品集 (`neon-portfolio`), or another style the user describes. Do not choose for the user; if they have no preference, ask whether to use `ats-clean` as the default.
 4. If the user has no optimization direction, infer it from the resume's target role, job-seeking information, strongest projects, and visible gaps. If the target role is not present, ask only for the target role before optimizing.
@@ -156,7 +156,7 @@ Prefer this sequence:
 
 1. Produce a concise content plan or draft for quick review when the content is incomplete or the risk of misinterpretation is high.
 2. Create the clean primary HTML resume artifact by default.
-3. Tune HTML print pagination before exporting or finishing. For multi-page resumes, use the JavaScript-assisted pagination workflow in `html-pagination.md`: render content once, measure block heights, compare each block with the A4 content area height after page padding, then create separate `.resume-page` elements. Do not only calculate large modules. If a card or section does not fit but the current page still has useful space, split the next module by the current page's remaining height and move only the measured amount that fits upward. If the remaining height can only fit one line, split the first text item by measured height, move that line upward, and keep the remaining text plus the rest of the module as one continuation block. The moved fragment must keep the same card/bullet/accent formatting as the original module; do not render it as bare text. Avoid repeatedly splitting the same header or creating several continuation labels for one module. If the first fragment narrowly does not fit, try a compact page-fragment style before opening a new page. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, adjust spacing, or refine layout density so page boundaries look continuous. For existing resumes, do not shorten bullets, remove sections, or compact content to fix pagination unless the user explicitly requests or approves that tradeoff. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
+3. Tune HTML print pagination before exporting or finishing. Every generated HTML resume should use the JavaScript-assisted pagination workflow in `html-pagination.md`, even if the content appears to fit on one page: render content once, measure block heights, compare each block with the A4 content area height after page padding, then create separate `.resume-page` elements. Do not only calculate large modules. If a card or section does not fit but the current page still has useful space, split the next module by the current page's remaining height and move only the measured amount that fits upward. If the remaining height can only fit one line, split the first text item by measured height, move that line upward, and keep the remaining text plus the rest of the module as one continuation block. The moved fragment must keep the same card/bullet/accent formatting as the original module; do not render it as bare text. Avoid repeatedly splitting the same header or creating several continuation labels for one module. If the first fragment narrowly does not fit, try a compact page-fragment style before opening a new page. Avoid large blank areas caused by oversized unbreakable cards; allow long project/experience blocks to split naturally, adjust spacing, or refine layout density so page boundaries look continuous. For existing resumes, do not shorten bullets, remove sections, or compact content to fix pagination unless the user explicitly requests or approves that tradeoff. Add enough page-edge breathing room so headings, company names, project titles, and first bullets are not pressed against the top or bottom of a page.
 4. Stop after the editable HTML resume is complete unless the user explicitly asks for another artifact.
 5. Keep source files editable and avoid hiding private contact information in reusable public examples.
 6. Summarize decisions and remaining risks.
@@ -167,12 +167,14 @@ Prefer this sequence:
 - Visible resume text has no typos, wrong characters, accidental encoding artifacts, inconsistent names, or incorrect role/project/company terms.
 - Summary matches the strongest evidence in the experience section.
 - Dates and organization/project names are consistent.
+- Header metadata and body sections are not redundant. Education, certificates, contact information, target role, and key skills are not repeated in multiple places unless the later section adds meaningful detail.
 - Skills listed are supported by work, study, project, practice, or portfolio content.
 - Featured items show real actions and deliverables, not only participation.
 - Beginner practice items are labeled honestly.
 - No invented metrics, fake employers, fake clients, fake seniority, or unverifiable claims.
 - Contact info is present only in final private deliverables, not in reusable examples.
 - HTML print layout uses an A4 page frame by default, with `@page size: A4` or an equivalent A4 print simulation, unless the user explicitly requested another paper size.
-- Multi-page HTML uses separate `.resume-page` elements generated by measuring rendered content height against the available A4 content area, not a single long page with accidental browser slicing.
+- HTML output contains `#resume-pages`, `#resume-source`, `.resume-page`, and the paginator script by default, so both single-page and multi-page resumes are produced through measured A4 pagination instead of a single static long page.
 - HTML print layout has no text clipping, overlapping, or awkward orphan lines.
 - HTML print preview has no obvious page-break gaps, oversized blank areas, uneven text/module spacing, cramped page-edge content, orphaned section headings, clipped content, inconsistent split-fragment formatting, repeated continuation headers, or cards pushed wholesale to the next page when they could be split or adjusted with layout changes.
+- Visual styling is internally consistent: card radius, hero radius, borders, shadows, accent lines, section dividers, and continuation fragments follow one clear rule. Inset cards or hero blocks should not have square top corners and rounded bottom corners unless the design is explicitly a full-bleed page-edge banner.

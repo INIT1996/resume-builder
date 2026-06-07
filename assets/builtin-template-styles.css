@@ -516,7 +516,7 @@ body {
   margin: -4mm -5mm 16px;
   padding: 13mm 12mm;
   border: 1px solid rgba(54, 255, 94, 0.28);
-  border-radius: 0 0 14px 14px;
+  border-radius: 14px;
   background:
     radial-gradient(circle at 78% 35%, rgba(54, 255, 94, 0.28), transparent 24%),
     linear-gradient(135deg, rgba(54,255,94,0.13), rgba(0,0,0,0));

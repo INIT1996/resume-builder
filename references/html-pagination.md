@@ -1,10 +1,10 @@
 # HTML Pagination
 
-Use this reference when an HTML resume may exceed one A4 page, when page margins disappear after printing, or when CSS-only page breaks create large blank gaps.
+Use this reference for every generated HTML resume, even when the content appears to fit on one A4 page. It defines the default A4 page structure and JavaScript paginator. Also use it when page margins disappear after printing, CSS-only page breaks create large blank gaps, split fragments lose formatting, or continuation headers repeat.
 
 ## Core Idea
 
-Generate the resume as a normal linear flow first, then run a small paginator after fonts and images are loaded. The paginator measures the rendered height of each content block and moves blocks into fixed A4 `.resume-page` containers. A page is full when adding the next block would exceed the available content height after top and bottom padding.
+Generate the resume as a normal linear source flow first, then run a small paginator after fonts and images are loaded. The paginator measures the rendered height of each content block and moves blocks into fixed A4 `.resume-page` containers. A page is full when adding the next block would exceed the available content height after top and bottom padding. If the content fits on one page, the paginator still produces one `.resume-page`; do not skip the pagination structure.
 
 This prevents the browser from slicing one long document at arbitrary positions and keeps every printed page inside the same page padding.
 

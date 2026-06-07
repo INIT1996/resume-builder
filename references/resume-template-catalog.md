@@ -4,7 +4,9 @@ Use this catalog when presenting resume template styles for the user to choose.
 
 Default rule: ask the user to choose one of these styles after confirming whether they already have a resume and before final HTML generation. Do not choose a style for the user based on role, industry, or delivery scenario. If the user has no preference, ask them to confirm `ats-clean` as the default style.
 
-All templates must follow the HTML print rules in `SKILL.md`: Chinese by default, A4 by default, no typos, even spacing, no page-break gaps, no cramped page-edge content, and no text clipping.
+All templates must follow the HTML print rules in `SKILL.md`: Chinese by default, A4 by default, no typos, even spacing, no duplicate modules, no page-break gaps, no cramped page-edge content, no text clipping, and consistent visual rules.
+
+Template visuals should be internally coherent. Cards, hero blocks, metrics, and section containers should use one clear corner-radius rule. Do not mix square top corners with rounded bottom corners for inset blocks unless the block is intentionally full-bleed and visually attached to the page edge.
 
 ## Template Options
 
