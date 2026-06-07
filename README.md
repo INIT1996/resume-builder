@@ -41,23 +41,22 @@ Resume Builder 是一个用于生成和优化简历的 Codex Skill。它会围�
 ## 目录结构
 
 ```text
-.
-└── resume-builder/
-    ├── SKILL.md
-    ├── agents/
-    │   └── openai.yaml
-    ├── assets/
-    │   └── builtin-template-styles.css
-    ├── examples/
-    │   ├── pagination-stress-test.html
-    │   └── sample-resume-pagination.html
-    ├── references/
-    │   ├── html-pagination.md
-    │   ├── resume-profile-schema.md
-    │   ├── resume-template-catalog.md
-    │   └── resume-workflow.md
-    └── scripts/
-        └── create_profile_template.py
+resume-builder/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+├── assets/
+│   └── builtin-template-styles.css
+├── examples/
+│   ├── pagination-stress-test.html
+│   └── sample-resume-pagination.html
+├── references/
+│   ├── html-pagination.md
+│   ├── resume-profile-schema.md
+│   ├── resume-template-catalog.md
+│   └── resume-workflow.md
+└── scripts/
+    └── create_profile_template.py
 ```
 
 ## 安装方式
@@ -89,7 +88,7 @@ Copy-Item -Recurse -Force .\resume-builder $skillsDir
 在 Codex 中可以这样开始：
 
 ```text
-使用 resume-builder 帮我优化这份前端开发简历，突出项目经历，输出 HTML 版本。
+使用 resume-builder 帮我创建一份简历。
 ```
 
 Skill 会先确认用户是否已有简历：

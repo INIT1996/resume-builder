@@ -41,23 +41,22 @@ The `resume-builder/` directory includes:
 ## Project Structure
 
 ```text
-.
-└── resume-builder/
-    ├── SKILL.md
-    ├── agents/
-    │   └── openai.yaml
-    ├── assets/
-    │   └── builtin-template-styles.css
-    ├── examples/
-    │   ├── pagination-stress-test.html
-    │   └── sample-resume-pagination.html
-    ├── references/
-    │   ├── html-pagination.md
-    │   ├── resume-profile-schema.md
-    │   ├── resume-template-catalog.md
-    │   └── resume-workflow.md
-    └── scripts/
-        └── create_profile_template.py
+resume-builder/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+├── assets/
+│   └── builtin-template-styles.css
+├── examples/
+│   ├── pagination-stress-test.html
+│   └── sample-resume-pagination.html
+├── references/
+│   ├── html-pagination.md
+│   ├── resume-profile-schema.md
+│   ├── resume-template-catalog.md
+│   └── resume-workflow.md
+└── scripts/
+    └── create_profile_template.py
 ```
 
 ## Installation
@@ -89,7 +88,7 @@ Please install this resume-builder skill for me: https://github.com/INIT1996/res
 In Codex, start with a prompt like:
 
 ```text
-Use resume-builder to optimize this frontend developer resume, highlight project experience, and output an HTML version.
+Use resume-builder to help me create a resume.
 ```
 
 The skill first asks whether the user already has a resume:
